@@ -43,6 +43,18 @@ class ObfuscatedForms
      * @throws ObfuscatedFormsException
      * @throws \Comely\IO\Session\Exception\ComelySessionException
      */
+    public function get(string $name, string ...$fields): Form
+    {
+        return $this->retrieve($name, false) ?? $this->obfuscate($name, ...$fields);
+    }
+
+    /**
+     * @param string $name
+     * @param string[] ...$fields
+     * @return Form
+     * @throws ObfuscatedFormsException
+     * @throws \Comely\IO\Session\Exception\ComelySessionException
+     */
     public function obfuscate(string $name, string ...$fields): Form
     {
         // Generate
@@ -79,11 +91,11 @@ class ObfuscatedForms
         $form = $this->session->meta()->bag("obfuscated_forms")
             ->get($name);
 
-        if (!$form || !is_string($form)) {
+        if (!$form) {
             return null;
         }
 
-        $form = unserialize($form, [
+        $form = unserialize(strval($form), [
             "allowed_classes" => ['Comely\IO\HttpSecurity\ObfuscatedForms\Form']
         ]);
 
