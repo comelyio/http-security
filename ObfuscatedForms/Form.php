@@ -65,7 +65,7 @@ class Form implements \Serializable
             throw new ObfuscatedFormsException('Failed to get random bytes from a cryptographically secure source');
         }
 
-        $bytes = str_split($bytes, $keyLength);
+        $bytes = str_split(bin2hex($bytes), $keyLength);
         if (count($bytes) !== count(array_unique($bytes))) {
             // A repeating key detected, retry!
             throw new ObfuscatedFormsException(
