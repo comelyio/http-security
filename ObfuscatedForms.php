@@ -71,7 +71,7 @@ class ObfuscatedForms
 
         // Store
         $this->session->meta()->bag("obfuscated_forms")
-            ->set($form->name(), serialize($fields));
+            ->set($form->name(), serialize($form));
 
         return $form;
     }
