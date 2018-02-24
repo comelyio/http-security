@@ -206,4 +206,15 @@ class Form implements \Serializable
     {
         return $this->name;
     }
+
+    /**
+     * @return array
+     */
+    public function array(): array
+    {
+        return [
+            "hash" => $this->hash,
+            "fields" => $this->fields
+        ];
+    }
 }
