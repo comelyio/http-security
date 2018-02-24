@@ -1,0 +1,23 @@
+{
+  "name": "comelyio/http-security",
+  "description": "HTTP Security component for your Comely apps",
+  "keywords": ["security","http-security","http","comely", "comelyio", "comely.io", "comely2"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Furqan A. Siddiqui",
+      "email": "hello@furqansiddiqui.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "comelyio/comely-kernel": "*",
+    "comelyio/session": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Comely\\IO\\HttpSecurity\\": ""
+    }
+  },
+  "minimum-stability": "dev"
+}
