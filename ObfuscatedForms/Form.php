@@ -46,7 +46,7 @@ class Form implements \Serializable
      */
     public function __construct(string $name, string ...$fields)
     {
-        if (!preg_match('/^\w{3,32}$/', $name)) {
+        if (!preg_match('/^[\w\-\.]{3,32}$/', $name)) {
             throw new ObfuscatedFormsException('Invalid form name');
         }
 
@@ -77,7 +77,7 @@ class Form implements \Serializable
         $pos = 0;
         $hash = "";
         foreach ($fields as $field) {
-            if (!preg_match('/^\w{2,32}$/', $field)) {
+            if (!preg_match('/^[\w\-\.]{2,32}$/', $field)) {
                 throw new ObfuscatedFormsException(sprintf('Form "%s" contains an invalid key', $name));
             }
 
@@ -117,7 +117,7 @@ class Form implements \Serializable
         $unserialize = unserialize(base64_decode($serialized));
 
         $name = $unserialize["name"] ?? null;
-        if (!is_string($name) || !preg_match('/^\w{3,32}$/', $name)) {
+        if (!is_string($name) || !preg_match('/^[\w\-\.]{3,32}$/', $name)) {
             throw new ObfuscatedFormsException(
                 sprintf('Serialized obfuscated form is incomplete or corrupt [%d]', __LINE__)
             );

@@ -84,7 +84,7 @@ class ObfuscatedForms
      */
     public function retrieve(string $name, bool $purge = false): ?Form
     {
-        if (!preg_match('/^\w{3,32}$/', $name)) {
+        if (!preg_match('/^[\w\-\.]{3,32}$/', $name)) {
             throw new ObfuscatedFormsException('Invalid form name');
         }
 
