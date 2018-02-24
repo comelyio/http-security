@@ -90,6 +90,7 @@ class Form implements \Serializable
             $this->obfuscated[$key] = $field;
             $this->fields[$field] = $key;
             $this->count++;
+            $pos++;
         }
 
         // Generate hash
